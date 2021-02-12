@@ -2,7 +2,7 @@
 
 `JIML` is a language which allows advanced inline JSON modifications. For example
 
-```json
+```
 {
     "a": 2 + 2 * 2,                                     //math operations
 
@@ -88,6 +88,10 @@ INPUT:
     }
 }
 
+```
+
+
+```
 EXPRESSION:
 
 {
@@ -157,18 +161,22 @@ INPUT:
 {
     "input": [1,2,3]
 }
+```
 
+```
 EXPRESSION:
 
 {
-    "value": input ?> (x) -> (x != 2)       // [1, 3]
+    "value": input ?> (x) -> (x != 2)               // [1, 3]
                    >> (x) -> ({
                        "a": [x, x * 2],
-                       "b": [x, x + 2]
-                   })                       //[{"a": [1, 2], "b": [1, 3]},
-                                            // {"a": [3, 6], "b": [3, 5]}]
-                   >< [], (acc, x) -> ([...acc, ...x.a, x.b[1]])      // [1, 2, 3, 3, 6, 5]
-                   >< 0, (acc, x) -> (acc + x)                        // 1 + 2 + 3 + 3 + 6 + 5
+                       "b": [x, x + 2]              //[{"a": [1, 2], "b": [1, 3]},
+                   })                               // {"a": [3, 6], "b": [3, 5]}]
+                   >< [], (acc, x) -> ([
+                       ...acc, 
+                       ...x.a, 
+                       x.b[1]])                     // [1, 2, 3, 3, 6, 5]
+                   >< 0, (acc, x) -> (acc + x)      // 1 + 2 + 3 + 3 + 6 + 5
                    
 }
 
