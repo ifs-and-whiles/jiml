@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29418.71
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jiml", "Jiml\Jiml.csproj", "{43690CCE-DDF4-4707-BFCB-7A2F400C5D50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jiml.Grammar", "Jiml.Grammar\Jiml.Grammar.csproj", "{8E0564B0-C336-45AA-A097-3C32F066BD41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jiml.Tests", "Jiml.Tests\Jiml.Tests.csproj", "{8427BBF9-C0A0-4D80-A9D4-AC7ED789AF85}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43690CCE-DDF4-4707-BFCB-7A2F400C5D50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43690CCE-DDF4-4707-BFCB-7A2F400C5D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43690CCE-DDF4-4707-BFCB-7A2F400C5D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43690CCE-DDF4-4707-BFCB-7A2F400C5D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E0564B0-C336-45AA-A097-3C32F066BD41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0564B0-C336-45AA-A097-3C32F066BD41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0564B0-C336-45AA-A097-3C32F066BD41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0564B0-C336-45AA-A097-3C32F066BD41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8427BBF9-C0A0-4D80-A9D4-AC7ED789AF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8427BBF9-C0A0-4D80-A9D4-AC7ED789AF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8427BBF9-C0A0-4D80-A9D4-AC7ED789AF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8427BBF9-C0A0-4D80-A9D4-AC7ED789AF85}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6792316A-1E17-4108-83C9-BBF5E95D191B}
+	EndGlobalSection
+EndGlobal

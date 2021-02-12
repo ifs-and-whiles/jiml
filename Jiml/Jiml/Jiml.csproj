@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlBaseListener.cs" Link="JimlBaseListener.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlBaseVisitor.cs" Link="JimlBaseVisitor.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlLexer.cs" Link="JimlLexer.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlListener.cs" Link="JimlListener.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlParser.cs" Link="JimlParser.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlVisitor.cs" Link="JimlVisitor.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4" Version="4.6.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Antlr4.Runtime" Version="4.6.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Utils\" />
+  </ItemGroup>
+
+</Project>
