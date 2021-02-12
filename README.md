@@ -2,7 +2,7 @@
 
 `JIML` is a language which allows advanced inline JSON modifications. For example
 
-```
+```js
 {
     "a": 2 + 2 * 2,                                     //math operations
 
@@ -17,34 +17,34 @@
                    >< 0, (acc, x) -> (acc + x)          //chaining operations
 
     "f": {
-        ? true -> "a": "val a",     //if condition met then append property
+        ? true -> "a": "val a",                         //if condition met then append property
 
-        ? false -> "b": "val b",    //if not then property won't be appended
+        ? false -> "b": "val b",                        //if not then property won't be appended
 
         ? false -> "c": "val c" 
-        | "d": "val d",             //if - else for appending properties
+        | "d": "val d",                                 //if - else for appending properties
 
         ? false -> "e": "val e" 
         |? false -> "f": "val f"
-        | "g" : "val g"     //if - elseif - else for appending properties
+        | "g" : "val g"                                 //if - elseif - else for appending properties
     },
 
     "g": [
-        ? true -> 1,        //if condition met then insert element
+        ? true -> 1,                                    //if condition met then insert element
 
-        ? false -> 2,       //if not then element won't be inserted
+        ? false -> 2,                                   //if not then element won't be inserted
 
         ? false -> 3 
-        | 4,                //if - else for inserting elements
+        | 4,                                            //if - else for inserting elements
 
         ? false -> 5
         |? false -> 6
-        | 7,                //if - elseif - else for inserting elements
+        | 7,                                            //if - elseif - else for inserting elements
 
 
-        ...[8, 9]                   //spreading arrays
+        ...[8, 9]                                       //spreading arrays
 
-        ? false -> ...[10, 11]      //conditional spreading arrays             
+        ? false -> ...[10, 11]                          //conditional spreading arrays             
     ]
 }
 ```
@@ -91,42 +91,42 @@ INPUT:
 ```
 
 
-```
+```js
 EXPRESSION:
 
 {
-    "a": input.a,               //accessing input properties
+    "a": input.a,                       //accessing input properties
     
-    "b": input.array,           //accessing input arrays
+    "b": input.array,                   //accessing input arrays
 
-    "c": input.obj.b.c[1].e     //accessing deeply nested value
+    "c": input.obj.b.c[1].e             //accessing deeply nested value
     
     "arrays": {
-        "a": input.array[0],        //accessing array elements by index
+        "a": input.array[0],            //accessing array elements by index
 
-        "b": input.array[0, 2],     //picking more than one element from array by index
+        "b": input.array[0, 2],         //picking more than one element from array by index
 
-        "c": input.array[2:4],      //getting sub-array with range closed on both sides
+        "c": input.array[2:4],          //getting sub-array with range closed on both sides
 
-        "d": input.array[:4],       //getting sub-array with range opened on the left
+        "d": input.array[:4],           //getting sub-array with range opened on the left
         
-        "e": input.array[2:],       //getting sub-array with range opened on the right
+        "e": input.array[2:],           //getting sub-array with range opened on the right
         
-        "f": input.array[:],        //getting sub-array with range opened on both sides
+        "f": input.array[:],            //getting sub-array with range opened on both sides
 
-        "g": input.array[-4:-1],    //getting sub-array with negative range values 
-                                    //(to count from last element of array)
+        "g": input.array[-4:-1],        //getting sub-array with negative range values 
+                                        //(to count from last element of array)
 
         "h": input.array[           
-            ? true -> 0,            // if condition met then pick element at given index
+            ? true -> 0,                // if condition met then pick element at given index
 
-            ? false -> 1,           // if not then element won't be picked
+            ? false -> 1,               // if not then element won't be picked
 
-            ? false -> 2 | 3,        // if - else for index picking
+            ? false -> 2 | 3,           // if - else for index picking
 
             ? false -> 2 
             |? false -> 3 
-            | 4                     // if - elseif - else for index picking
+            | 4                         // if - elseif - else for index picking
         ]
     }
 }
@@ -163,7 +163,7 @@ INPUT:
 }
 ```
 
-```
+```js
 EXPRESSION:
 
 {
