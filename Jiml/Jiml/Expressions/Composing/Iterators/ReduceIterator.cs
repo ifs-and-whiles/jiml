@@ -50,8 +50,6 @@ namespace Jiml.Expressions.Composing.Iterators
 
             if (iterable.Value is JArray array)
             {
-                var results = new List<JToken>();
-
                 foreach (var jToken in array)
                 {
                     var scopedInput = GetScopedInput(

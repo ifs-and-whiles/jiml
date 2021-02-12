@@ -9,10 +9,10 @@ namespace Jiml.Tests
         public void can_iterate_through_array_elements_and_modify_them()
         {
             //given
-            var expressionStr =
-                "{" +
-                "\"value\": [1,2,3] >> (x) -> ( x + 10 )" +
-                "}";
+            var expressionStr = 
+            @"{
+                ""value"": [1,2,3] >> (x) -> (x + 10)
+            }";
 
             //when
             var expression = Jiml.Parse(expressionStr);
@@ -109,19 +109,19 @@ namespace Jiml.Tests
         {
             //given
             var expressionStr =
-                "{" +
-                "\"value\": [3,2,1] " +
-                "?> (x) -> ( x != 2 ) " +
-                ">> (x) -> ({ " +
-                "   \"a\": [x * 2, x * 3, x * 4], " +
-                "   \"b\": [x, x + 1, x + 2] " +
-                "})" +
-                ">< [10.0, 14.0], (acc, x) -> ([" +
-                "   x.a >< 0, (aAcc, y) -> ( aAcc + y )," +
-                "   ...(x.b >> (y) -> (y * 2)), " +
-                "   ...acc])" +
-                ">< 0, (acc,x) -> (acc + x)" +
-                "}";
+            @"{
+                ""value"": [3,2,1] ?> (x) -> (x != 2)
+                                   >> (x) -> ({
+                                        ""a"": [x*2, x*3, x*4],
+                                        ""b"": [x, x+1, x+2]   
+                                      })
+                                   >< [10.0, 14.0], (acc, x) -> ([
+                                        x.a >< 0, (aAcc, value) -> (aAcc + value),
+                                        ...(x.b >> (value) -> (value * 2)),
+                                        ...acc
+                                      ])
+                                   >< 0, (acc, x) -> (acc + x)
+            }";
 
             //when
             var expression = Jiml.Parse(expressionStr);
