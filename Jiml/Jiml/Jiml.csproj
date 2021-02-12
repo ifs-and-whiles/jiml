@@ -6,12 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlBaseListener.cs" Link="JimlBaseListener.cs" />
-    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlBaseVisitor.cs" Link="JimlBaseVisitor.cs" />
-    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlLexer.cs" Link="JimlLexer.cs" />
-    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlListener.cs" Link="JimlListener.cs" />
-    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlParser.cs" Link="JimlParser.cs" />
-    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlVisitor.cs" Link="JimlVisitor.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlBaseListener.cs" Link="Antlr\JimlBaseListener.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlBaseVisitor.cs" Link="Antlr\JimlBaseVisitor.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlLexer.cs" Link="Antlr\JimlLexer.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlListener.cs" Link="Antlr\JimlListener.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlParser.cs" Link="Antlr\JimlParser.cs" />
+    <Compile Include="..\Jiml.Grammar\obj\Debug\netcoreapp3.1\JimlVisitor.cs" Link="Antlr\JimlVisitor.cs" />
   </ItemGroup>
 
   <ItemGroup>

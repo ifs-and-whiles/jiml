@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using Jiml.Errors;
-using Jiml.Extracting;
+using Jiml.Expressions.Errors;
+using Jiml.Expressions.Extracting;
 using Newtonsoft.Json.Linq;
 using Xunit;
 

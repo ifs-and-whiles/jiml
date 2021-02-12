@@ -32,11 +32,7 @@ element
  : value				#ValueElementRule
  | '...' value			#SpreadElementRule
  ;
-
-math
- : value
- ;
-
+ 
 condition
  : '(' condition ')'						#SubConditionRule
  | '!' condition							#NegationRule
