@@ -12,6 +12,7 @@ using Jiml.Expressions.Composing.Numbers;
 using Jiml.Expressions.Composing.Object;
 using Jiml.Expressions.Composing.Object.Property;
 using Jiml.Expressions.Conditions;
+using Jiml.Expressions.Conditions.Numeric;
 using Jiml.Expressions.Extracting;
 using Jiml.Expressions.Extracting.ByIndex;
 using Jiml.Expressions.Extracting.ByIndex.PickIndex;
@@ -34,6 +35,27 @@ namespace Jiml.Antlr
 
             return new Expression(
                 composer);
+        }
+
+        public override object VisitValue(
+            JimlParser.ValueContext context)
+        {
+            if (context.expression() != null)
+            {
+                return Visit(context.expression());
+            }
+
+            if (context.condition() != null)
+            {
+                var condition = (ICondition)Visit(
+                    context.condition());
+
+                return new ConditionComposer(
+                    condition);
+            }
+
+            throw new JimlEvaluatorException(
+                "Unrecognized Value type");
         }
 
         public override object VisitStringValueRule(
@@ -115,22 +137,12 @@ namespace Jiml.Antlr
                 ifComposer,
                 elseComposer);
         }
-
-        public override object VisitConditionValueRule(
-            JimlParser.ConditionValueRuleContext context)
-        {
-            var condition = (ICondition) Visit(
-                context.condition());
-
-            return new ConditionComposer(
-                condition);
-        }
-
+        
         public override object VisitParensValueRule(
             JimlParser.ParensValueRuleContext context)
         {
             return Visit(
-                context.value());
+                context.expression());
         }
 
         public override object VisitMapRule(
@@ -450,6 +462,62 @@ namespace Jiml.Antlr
                 innerCondition: new EqualityCondition(
                     left,
                     right));
+        }
+
+        public override object VisitGreaterThanRule(
+            JimlParser.GreaterThanRuleContext context)
+        {
+            var left = (INumberComposer)Visit(
+                context.left);
+
+            var right = (INumberComposer)Visit(
+                context.right);
+
+            return new GreaterThanNumericCondition(
+                left,
+                right);
+        }
+
+        public override object VisitGreaterOrEqualToRule(
+            JimlParser.GreaterOrEqualToRuleContext context)
+        {
+            var left = (INumberComposer)Visit(
+                context.left);
+
+            var right = (INumberComposer)Visit(
+                context.right);
+
+            return new GreaterOrEqualToNumericCondition(
+                left,
+                right);
+        }
+
+        public override object VisitLessThanRule(
+            JimlParser.LessThanRuleContext context)
+        {
+            var left = (INumberComposer)Visit(
+                context.left);
+
+            var right = (INumberComposer)Visit(
+                context.right);
+
+            return new LessThanNumericCondition(
+                left,
+                right);
+        }
+
+        public override object VisitLessOrEqualToRule(
+            JimlParser.LessOrEqualToRuleContext context)
+        {
+            var left = (INumberComposer)Visit(
+                context.left);
+
+            var right = (INumberComposer)Visit(
+                context.right);
+
+            return new LessOrEqualToNumericCondition(
+                left,
+                right);
         }
 
         public override object VisitBoolRule(

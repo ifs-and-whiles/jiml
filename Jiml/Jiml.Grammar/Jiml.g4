@@ -38,25 +38,33 @@ condition
  | '!' condition							#NegationRule
  | left=condition '&&' right=condition		#AndRule
  | left=condition '||' right=condition		#OrRule
- | left=value '==' right=value				#EqualityRule
- | left=value '!=' right=value				#NotEqualityRule
+ | left=expression '==' right=expression	#EqualityRule
+ | left=expression '!=' right=expression	#NotEqualityRule
+ | left=number '>' right=number				#GreaterThanRule
+ | left=number '>=' right=number			#GreaterOrEqualToRule
+ | left=number '<' right=number				#LessThanRule
+ | left=number '<=' right=number			#LessOrEqualToRule
  | boolean									#BoolRule
  ;
 
 value
- : variable																								#VariableValueRule
- | STRING																								#StringValueRule
- | number																								#NumberValueRule
- | object																								#ObjectValueRule
- | array																								#ArrayValueRule
- | boolean																								#BooleanValueRule
- | NULL																									#NullValueRule
- | '?' condition '->' ifVal=value '|' elseVal=value														#IfElseValueRule
- | '(' condition ')'																					#ConditionValueRule
- | '(' value ')'																						#ParensValueRule
- | source=value '>>' '(' x=VAR (',' i=VAR)? ')' '->' '(' dest=value ')'									#MapRule
- | source=value '?>' '(' x=VAR (',' i=VAR)? ')' '->' '(' dest=condition	')'								#FilterRule
- | source=value '><' accVal=value ',' '(' acc=VAR ',' x=VAR (',' i=VAR)? ')' '->' '(' dest=value ')' 	#ReduceRule
+ : expression
+ | condition
+ ;
+
+expression
+ : '(' expression ')'																									#ParensValueRule
+ | '?' condition '->' ifVal=expression '|' elseVal=expression															#IfElseValueRule
+ | source=expression '>>' '(' x=VAR (',' i=VAR)? ')' '->' '(' dest=expression ')'										#MapRule
+ | source=expression '?>' '(' x=VAR (',' i=VAR)? ')' '->' '(' dest=condition	')'										#FilterRule
+ | source=expression '><' accVal=expression ',' '(' acc=VAR ',' x=VAR (',' i=VAR)? ')' '->' '(' dest=expression ')' 	#ReduceRule
+ | variable																												#VariableValueRule
+ | STRING																												#StringValueRule
+ | number																												#NumberValueRule
+ | object																												#ObjectValueRule
+ | array																												#ArrayValueRule
+ | boolean																												#BooleanValueRule
+ | NULL																													#NullValueRule
  ;	
  
 number

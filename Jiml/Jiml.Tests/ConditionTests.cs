@@ -312,6 +312,110 @@ namespace Jiml.Tests
         }
 
         [Fact]
+        public void can_use_greater_than_operator_on_two_numbers()
+        {
+            //given
+            var expressionStr =
+                "{" +
+                "? 1 > 2 -> \"b\": 1," +
+                "? 2 > 1 -> \"c\": 2" +
+                "}";
+
+            //when
+            var expression = Jiml.Parse(expressionStr);
+            var input = Json.From(new { });
+
+            //then
+            var result = expression.Evaluate(input);
+
+            result.Should().Be(
+                new Jiml.Result(Json.From(
+                    new
+                    {
+                        c = 2
+                    })));
+        }
+
+        [Fact]
+        public void can_use_greater_or_equal_to_operator_on_two_numbers()
+        {
+            //given
+            var expressionStr =
+                "{" +
+                "? 1 >= 2 -> \"b\": 1," +
+                "? 2 >= 1 -> \"c\": 2," +
+                "? 2 >= 2 -> \"d\": 3" +
+                "}";
+
+            //when
+            var expression = Jiml.Parse(expressionStr);
+            var input = Json.From(new { });
+
+            //then
+            var result = expression.Evaluate(input);
+
+            result.Should().Be(
+                new Jiml.Result(Json.From(
+                    new
+                    {
+                        c = 2,
+                        d = 3
+                    })));
+        }
+
+        [Fact]
+        public void can_use_less_than_operator_on_two_numbers()
+        {
+            //given
+            var expressionStr =
+                "{" +
+                "? 1 < 2 -> \"b\": 1," +
+                "? 2 < 1 -> \"c\": 2" +
+                "}";
+
+            //when
+            var expression = Jiml.Parse(expressionStr);
+            var input = Json.From(new { });
+
+            //then
+            var result = expression.Evaluate(input);
+
+            result.Should().Be(
+                new Jiml.Result(Json.From(
+                    new
+                    {
+                        b = 1
+                    })));
+        }
+
+        [Fact]
+        public void can_use_less_or_equal_to_operator_on_two_numbers()
+        {
+            //given
+            var expressionStr =
+                "{" +
+                "? 1 <= 2 -> \"b\": 1," +
+                "? 2 <= 1 -> \"c\": 2," +
+                "? 2 <= 2 -> \"d\": 3" +
+                "}";
+
+            //when
+            var expression = Jiml.Parse(expressionStr);
+            var input = Json.From(new { });
+
+            //then
+            var result = expression.Evaluate(input);
+
+            result.Should().Be(
+                new Jiml.Result(Json.From(
+                    new
+                    {
+                        b = 1,
+                        d = 3
+                    })));
+        }
+
+        [Fact]
         public void can_use_equality_operator_on_two_arrays()
         {
             //given
@@ -492,7 +596,31 @@ namespace Jiml.Tests
             //given
             var expressionStr =
                 "{" +
-                "\"b\": (true || false)" +
+                "\"b\": true || false" +
+                "}";
+
+            //when
+            var expression = Jiml.Parse(expressionStr);
+            var input = Json.From(new { });
+
+            //then
+            var result = expression.Evaluate(input);
+
+            result.Should().Be(
+                new Jiml.Result(Json.From(
+                    new
+                    {
+                        b = true
+                    })));
+        }
+
+        [Fact]
+        public void can_assign_numeric_condition_result_as_a_property_value()
+        {
+            //given
+            var expressionStr =
+                "{" +
+                "\"b\": 2 > 1" +
                 "}";
 
             //when
@@ -516,7 +644,7 @@ namespace Jiml.Tests
             //given
             var expressionStr =
                 "{" +
-                "\"b\": [(true || false)]" +
+                "\"b\": [true || false]" +
                 "}";
 
             //when
